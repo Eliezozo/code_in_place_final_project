@@ -31,7 +31,15 @@ def main() -> None:
     print("  7 - العربية")
 
     language = input("Votre choix (1-7) : ").strip()
-    message = get_birthday_message(name, language)
+    custom_message = input("Entrez votre message de souhait : ").strip()
+
+    if custom_message:
+        if "{}" in custom_message:
+            message = custom_message.format(name)
+        else:
+            message = f"{custom_message} {name}"
+    else:
+        message = get_birthday_message(name, language)
 
     print("\nMessage :")
     print(message)
